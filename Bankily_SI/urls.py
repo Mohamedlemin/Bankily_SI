@@ -18,7 +18,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('BankilySi/', include('transaction.urls')),
+     path('BankilySi/det/', include('dete.urls')),
 ]
