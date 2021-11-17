@@ -48,6 +48,7 @@ class LeftSideBar extends Component {
                             <a href="/Transaction"><i className="zmdi zmdi-transform" /><span>Transaction</span></a>
                             <a href="/Clients"><i className="zmdi zmdi-assignment" /><span>Dettes</span></a>
                             <a href="/Charge"><i className="zmdi zmdi-case-check" /><span>Charges</span></a>
+                            <a href="/Profile"><i className="zmdi zmdi-account" /><span>Profile</span></a>
                             {/* <a href="profile"><i class="zmdi zmdi-settings"></i><span>Profile</span></Link> */}
                         </ul>
                     </div>
