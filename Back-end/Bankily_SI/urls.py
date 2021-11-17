@@ -22,6 +22,7 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('BankilySi/', include('transaction.urls')),
-     path('BankilySi/det/', include('dete.urls')),
+    path('transaction/', include('transaction.urls')),
+    path('Dettes/', include('dete.urls')),
+    path('Charge/', include('charge.urls')),
 ]
