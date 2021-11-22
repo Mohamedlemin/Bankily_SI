@@ -1,6 +1,20 @@
 import React from 'react';
+import axios from 'axios'
 
 class Charge extends React.Component {
+
+    state = { charges: [], }
+    componentDidMount() {
+        let data;
+        axios.get('http://127.0.0.1:8000/Charge/List/')
+            .then(res => {
+                data = res.data;
+                this.setState({
+                    charges: data
+                });
+            }).catch(err => { })
+
+    }
     render() {
         return (
             <React.Fragment>
@@ -54,15 +68,25 @@ class Charge extends React.Component {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>$320,800</td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" className="btn btn-warning waves-effect waves-float btn-sm waves-green"><i className="zmdi zmdi-edit" /></a>
-                                                            <a href="javascript:void(0);" className="btn btn-danger waves-effect waves-float btn-sm waves-red"><i className="zmdi zmdi-delete" /></a>
-                                                        </td>
-                                                    </tr>
+                                                    {this.state.charges.map((output) => {
+                                                        return (
+
+
+                                                            <tr>
+                                                                <td>{output.Description}</td>
+                                                                <td>{output.MotantCharge} N-UN</td>
+                                                                <td>Le {output.Date} </td>
+                                                                <td>
+                                                                    <a href="javascript:void(0);" className="btn btn-warning waves-effect waves-float btn-sm waves-green"><i className="zmdi zmdi-edit" /></a>
+                                                                    <a href="javascript:void(0);" className="btn btn-danger waves-effect waves-float btn-sm waves-red"><i className="zmdi zmdi-delete" /></a>
+                                                                </td>
+                                                            </tr>
+                                                        )
+
+
+
+                                                    })}
+
                                                 </tbody>
                                             </table>
                                         </div>
