@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 class Transaction extends Component {
+    state = { details: [], }
+    componentDidMount() {
+        let data;
+        axios.get('http://127.0.0.1:8000/transaction/List/')
+            .then(res => {
+                data = res.data;
+                this.setState({
+                    details: data
+                });
+            }).catch(err => { })
+
+    }
     render() {
         return (
             <React.Fragment>
@@ -33,32 +46,29 @@ class Transaction extends Component {
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
+
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>61</td>
-                                                        <td>2011/04/25</td>
-                                                        <td>$320,800</td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" className="btn btn-warning waves-effect waves-float btn-sm waves-green"><i className="zmdi zmdi-edit" /></a>
-                                                            <a href="javascript:void(0);" className="btn btn-danger waves-effect waves-float btn-sm waves-red"><i className="zmdi zmdi-delete" /></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>61</td>
-                                                        <td>2011/04/25</td>
-                                                        <td>$320,800</td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" className="btn btn-warning waves-effect waves-float btn-sm waves-green"><i className="zmdi zmdi-edit" /></a>
-                                                            <a href="javascript:void(0);" className="btn btn-danger waves-effect waves-float btn-sm waves-red"><i className="zmdi zmdi-delete" /></a>
-                                                        </td>
-                                                    </tr>
+                                                    {this.state.details.map((output, id) => {
+                                                        return (
+
+                                                            <tr>
+                                                                <td>Le {output.date} </td>
+                                                                <td>{output.portfeuille}</td>
+                                                                <td>{output.operation}</td>
+                                                                <td>{output.telephone}</td>
+                                                                <td>{output.montant}</td>
+                                                                <td>{output.commision}</td>
+                                                                <td>
+                                                                    <a href="javascript:void(0);" className="btn btn-warning waves-effect waves-float btn-sm waves-green"><i className="zmdi zmdi-edit" /></a>
+                                                                    <a href="javascript:void(0);" className="btn btn-danger waves-effect waves-float btn-sm waves-red"><i className="zmdi zmdi-delete" /></a>
+                                                                </td>
+
+                                                            </tr>
+                                                        )
+
+                                                    })}
                                                 </tbody>
+
                                             </table>
                                         </div>
                                     </div>

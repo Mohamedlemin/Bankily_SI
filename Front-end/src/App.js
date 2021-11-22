@@ -9,6 +9,7 @@ import Transaction from './components/Transaction';
 import Charge from './components/Charge';
 import Clients from './components/Clients';
 import Dettes from './components/Dettes';
+import Profile from './components/Profile';
 
 
 
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/Charge" component={Charge} />
             <Route path="/Clients" component={Clients} />
             <Route path="/Dettes" component={Dettes} />
+            <Route path="/Profile" component={Profile} />
 
 
 

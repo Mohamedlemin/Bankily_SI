@@ -20,8 +20,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
+admin.site.site_header = 'PC Bankily'
+admin.site.index_title = 'Admin'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('BankilySi/', include('transaction.urls')),
-     path('BankilySi/det/', include('dete.urls')),
+    path('transaction/', include('transaction.urls')),
+    path('Dettes/', include('dete.urls')),
+    path('Charge/', include('charge.urls')),
 ]

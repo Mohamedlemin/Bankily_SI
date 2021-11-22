@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    'transaction',
-    'dete',
     'corsheaders',
     'rest_framework',
+    'transaction',
+    'dete',
+    'charge',
 ]
 
 MIDDLEWARE = [
@@ -52,15 +53,25 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
+
+REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framwork.permission.AllowAny'
+]}
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'Bankily_SI.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,9 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #
-#CORS_ORIGIN_WHITELIST=(
-    #'http://localhost:3000'
-#)
+# CORS_ORIGIN_WHITELIST=(
+# 'http://localhost:3000'
+# )
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -133,6 +144,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK={
-    'COERCE_DECIMAL_TO_STRING':False
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False
 }
